@@ -1,5 +1,25 @@
 import React, { Component } from 'react'
 
+const Image = ({ image, removeImaage }) => {
+  const objectUrl = window.URL.createObjectURL(image)
+
+  return (
+    <div className='dib w-50 relative'>
+      <div className='w-100 h-100 absolute pa2'>
+        <div
+          className='w-100 h-100'
+          style={{
+            background: `url(${objectUrl}) 50% 50% no-repeat`
+          }}
+          ></div>
+      </div>
+      <div style={{ paddingBottom: '100%'}} ></div>
+    </div>
+  )
+}
+const ImageGallery = ({ images, removeImage }) =>
+  images.map(image => <Image image={image} removeImage={removeImage} />)
+
 class ImageUpload extends Component {
   constructor(props) {
     super(props)
@@ -8,7 +28,6 @@ class ImageUpload extends Component {
   }
 
   onChange(e) {
-    console.log(this);
     const {
       name,
       value: images,
@@ -37,21 +56,20 @@ class ImageUpload extends Component {
     } = this.props
 
     return (
-      <div className='mt2'>
-        <input
-          className='upload_icon contain db center'
-          onChange={this.onChange}
-          type='file'
-          name={name}
-          accept='image/*'
-          multiple
-        />
-        {(images).map(image =>
-          <div>
-            {image.name}
-          </div>
-        )}
-        <span className='center db tc f6'> Upload from device </span>
+      <div className='bw1 ba br-4 b--light-gray ma4'>
+        <div>
+          <label for={name}>clickMe!</label>
+          <input
+            className='o-0'
+            style={{ height: '0', width: '0'}}
+            onChange={this.onChange}
+            type='file'
+            name={name}
+            accept='image/*'
+            multiple
+            />
+        </div>
+        <ImageGallery images={images} />
       </div>
     )
   }
