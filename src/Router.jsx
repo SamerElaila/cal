@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import { Switch, IndexRoute } from 'react-router'
+import { Switch } from 'react-router'
 
 import Login from './components/login/Login'
 import Events from './components/events/Events'

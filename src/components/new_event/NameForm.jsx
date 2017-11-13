@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 import TextInput from '../shared/TextInput'
-import TextArea from '../shared/TextArea'
 import Button from '../shared/Button'
 
 class NameForm extends Component {
@@ -10,7 +9,6 @@ class NameForm extends Component {
     const {
       match,
       eventName,
-      description,
       onChange
     } = this.props
 

@@ -11,7 +11,9 @@ class NewEvent extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {}
+    this.state = {
+      images: []
+    }
 
     this.onChange = this.onChange.bind(this)
   }
