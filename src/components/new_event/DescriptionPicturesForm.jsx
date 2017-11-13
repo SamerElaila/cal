@@ -20,10 +20,11 @@ class DescriptionPicturesForm extends Component {
         Enter your event description and add pictures.
       </div>,
       <TextArea
+        label='Event description'
         name='description'
-        placeholder='Description'
         onChange={onChange}
         value={description}
+        rows='4'
         />,
       <ImageUpload
         name='images'

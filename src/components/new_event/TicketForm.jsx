@@ -21,13 +21,13 @@ class NameDescriptionForm extends Component {
       </div>,
       <TextInput
         name='ticketPrice'
-        placeholder='Ticket price'
+        label='Ticket price'
         onChange={onChange}
         value={ticketPrice}
       />,
       <TextInput
         name='ticketQuantity'
-        placeholder='Ticket quantity'
+        label='Ticket quantity'
         onChange={onChange}
         value={ticketQuantity}
       />,

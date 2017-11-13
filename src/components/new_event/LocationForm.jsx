@@ -19,7 +19,7 @@ class NameDescriptionForm extends Component {
       </div>,
       <TextInput
         name='location'
-        placeholder='Location'
+        label='Location'
         onChange={onChange}
         value={location}
       />,

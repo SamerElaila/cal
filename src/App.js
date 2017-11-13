@@ -6,7 +6,7 @@ import '../node_modules/tachyons/css/tachyons.css';
 class App extends Component {
   render() {
     return (
-      <div className="Georgia min-h-100 pb5 relative">
+      <div className="helvetica min-h-100 pb5 relative">
         <Router />
       </div>
     );

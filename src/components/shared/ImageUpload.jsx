@@ -56,20 +56,24 @@ class ImageUpload extends Component {
     } = this.props
 
     return (
-      <div className='bw1 ba br-4 b--light-gray ma4'>
-        <div>
-          <label for={name}>clickMe!</label>
+      <div className='pa4 pb0'>
+        <span
+          className='f4 pa1 ttu'
+          >
+          Images
+        </span>
+        <div className='bw1 ba br-4 b--light-gray'>
+          <label className='db' for={name}>create event</label>
           <input
             className='o-0'
-            style={{ height: '0', width: '0'}}
             onChange={this.onChange}
             type='file'
             name={name}
             accept='image/*'
             multiple
             />
+          <ImageGallery images={images} />
         </div>
-        <ImageGallery images={images} />
       </div>
     )
   }

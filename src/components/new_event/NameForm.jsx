@@ -18,9 +18,10 @@ class NameForm extends Component {
       </div>,
       <TextInput
         name='eventName'
-        placeholder='Event name'
+        label='Event name'
         onChange={onChange}
         value={eventName}
+        autoFocus
       />,
       <Link to={`${match.url}/details`} className='link black'>
         <Button
