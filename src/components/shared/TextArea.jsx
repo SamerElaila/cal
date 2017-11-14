@@ -6,7 +6,7 @@ const TextArea = props => {
     <div className='w-100 pa4 pb0'>
       <label
         className='f4 pa1 ttu'
-        for={props.name}
+        htmlFor={props.name}
         >
         {label}
       </label>

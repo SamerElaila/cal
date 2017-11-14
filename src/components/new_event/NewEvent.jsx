@@ -25,30 +25,42 @@ class NewEvent extends Component {
     })
   }
 
+  submitEvent = () => {
+    const {
+      props: { createEvent },
+      state: eventData
+    } = this
+
+    createEvent(eventData)
+  }
+
   render() {
     const {
       state,
       props: { match },
-      onChange
+      onChange,
+      submitEvent
     } = this
 
-    return [
-      <Route exact path={match.url} render={() =>
-        <NameForm {...{ ...state, match, onChange }} />
-      }/>,
-      <Route path={`${match.url}/details`} render={() =>
-        <DescriptionPicturesForm {...{ ...state, match, onChange }} />
-      }/>,
-      <Route path={`${match.url}/location`} render={() =>
-          <LocationForm {...{ ...state, match, onChange }} />
-      }/>,
-      <Route path={`${match.url}/tickets`} render={() =>
-          <TicketForm {...{ ...state, match, onChange }} />
-      }/>,
-      <Route path={`${match.url}/complete`} render={() =>
-          <Complete {...{ ...state, match, onChange }} />
-      }/>
-    ]
+    return (
+      <div>
+        <Route exact path={match.url} render={() =>
+          <NameForm {...{ ...state, match, onChange }} />
+        }/>
+        <Route path={`${match.url}/details`} render={() =>
+          <DescriptionPicturesForm {...{ ...state, match, onChange }} />
+        }/>
+        <Route path={`${match.url}/location`} render={() =>
+            <LocationForm {...{ ...state, match, onChange }} />
+        }/>
+        <Route path={`${match.url}/tickets`} render={() =>
+            <TicketForm {...{ ...state, match, onChange, submitEvent }} />
+        }/>
+        <Route path={`${match.url}/complete`} render={() =>
+            <Complete {...{ ...state, match, onChange }} />
+        }/>
+      </div>
+    )
   }
 }
 // <TextInput

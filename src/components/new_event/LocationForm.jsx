@@ -13,24 +13,26 @@ class NameDescriptionForm extends Component {
     } = this.props
     const isEmpty = typeof location === 'undefined' || location === ''
 
-    return [
-      <div className='w-100 pa4 tc f4 lh-copy'>
-        Add your event location
-      </div>,
-      <TextInput
-        name='location'
-        label='Location'
-        onChange={onChange}
-        value={location}
-      />,
-    <Link to={`${match.url}/tickets`} className='link black'>
-        <Button
-          className='tc absolute w-100 bottom-0'
-        >
-          {isEmpty ? 'Skip' : 'Next'}
-        </Button>
-      </Link>
-    ]
+    return (
+      <div>
+        <div className='w-100 pa4 tc f4 lh-copy'>
+          Add your event location
+        </div>,
+        <TextInput
+          name='location'
+          label='Location'
+          onChange={onChange}
+          value={location}
+        />,
+        <Link to={`${match.url}/tickets`} className='link black'>
+          <Button
+            className='tc absolute w-100 bottom-0'
+          >
+            {isEmpty ? 'Skip' : 'Next'}
+          </Button>
+        </Link>
+      </div>
+    )
   }
 }
 

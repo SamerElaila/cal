@@ -12,25 +12,27 @@ class NameForm extends Component {
       onChange
     } = this.props
 
-    return [
-      <div className='w-100 pa4 tc f4 lh-copy'>
-        Enter your event name and description
-      </div>,
-      <TextInput
-        name='eventName'
-        label='Event name'
-        onChange={onChange}
-        value={eventName}
-        autoFocus
-      />,
-      <Link to={`${match.url}/details`} className='link black'>
-        <Button
-          className='tc absolute w-100 bottom-0'
-        >
-          Next
-        </Button>
-      </Link>
-    ]
+    return (
+      <div>
+        <div className='w-100 pa4 tc f4 lh-copy'>
+          Enter your event name and description
+        </div>
+        <TextInput
+          name='eventName'
+          label='Event name'
+          onChange={onChange}
+          value={eventName}
+          autoFocus
+        />
+        <Link to={`${match.url}/details`} className='link black'>
+          <Button
+            className='tc absolute w-100 bottom-0'
+          >
+            Next
+          </Button>
+        </Link>
+      </div>
+    )
   }
 }
 

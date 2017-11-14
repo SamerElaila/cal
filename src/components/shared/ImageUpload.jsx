@@ -63,7 +63,7 @@ class ImageUpload extends Component {
           Images
         </span>
         <div className='bw1 ba br-4 b--light-gray'>
-          <label className='db' for={name}>create event</label>
+          <label className='db' htmlFor={name}>create event</label>
           <input
             className='o-0'
             onChange={this.onChange}
