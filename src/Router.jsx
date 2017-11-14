@@ -1,9 +1,10 @@
 import React from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-import { Switch } from 'react-router'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+// import { Switch } from 'react-router'
 
 import Login from './components/login/Login'
 import Events from './containers/Events'
+import Event from './containers/Event'
 import NewEvent from './containers/NewEvent'
 import Header from './components/Header'
 
@@ -16,6 +17,7 @@ export default () =>
           <Header />
           <Route exact path='/' component={Events}/>
           <Route path='/new-event' component={NewEvent}/>
+          <Route path='/events/:eventId' component={Event}/>
         </div>
       )}/>
     </Switch>

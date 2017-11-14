@@ -9,7 +9,7 @@ const initialState = {
 const createEvent = (state, { payload }) => ({
   ...state,
   events: [
-    { ...payload, id: state.eventsCount },
+    { ...payload, id: state.eventsCount.toString() },
     ...state.events
   ],
   eventsCount: state.eventsCount + 1
