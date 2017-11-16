@@ -1,21 +1,51 @@
 import React from 'react'
 
+import Button from '../shared/Button'
+import pluto from './pluto.png'
+
+const ImageGallery = () => {
+  const imageFixtureUrl = './pluto.png'
+  return (
+    <div className='w-100 vh-50'>
+      <img
+        className='w-100 h-100'
+        src={pluto}
+      />
+    </div>
+  )
+}
+
+const TicketDetails = ({ ticketPrice, ticketQuantity }) =>
+  <div>
+    Tickets price: <span className='b'>{ticketPrice}</span><br />
+    Tickets available: <span className='b'>{ticketQuantity}</span>
+  </div>
+
 const Event = props => {
   if (typeof props.event === 'undefined') return '404'
 
   const {
     event: {
       eventName,
-      description
+      description,
+      ticketPrice,
+      ticketQuantity,
+      images
     }
   } = props
 
   return (
     <div>
-      <h1> {eventName} </h1>
-      <div>
-        {description}
+      <ImageGallery />
+      <h1 className='f2 pa2 dark-gray ma0'> {eventName} </h1>
+      <div className='pa2 f4'>
+        <span className='b'> { ticketPrice } </span>
+        | { ticketQuantity } tickets left
       </div>
+      <div className='pa2 f3'> { description } </div>
+      <Button className='w-100 bottom-0 absolute ttu tc'>
+        Buy tickets
+      </Button>
     </div>
   )
 }

@@ -14,7 +14,6 @@ export default () =>
       <Route path='/login' component={Login} />
       <Route path='/' render={() => (
         <div>
-          <Header />
           <Route exact path='/' component={Events}/>
           <Route path='/new-event' component={NewEvent}/>
           <Route path='/events/:eventId' component={Event}/>
@@ -22,3 +21,5 @@ export default () =>
       )}/>
     </Switch>
   </Router>
+
+  // <Header />
