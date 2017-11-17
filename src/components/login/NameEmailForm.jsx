@@ -11,24 +11,17 @@ const NameEmailForm = ({ name, email, onInputChange, submitUserDetails }) => [
   </div>,
   <form>
     <TextInput
-      value={name}
-      onChange={onInputChange}
-      name='name'
-      placeholder='Your Name'
-    />
-    <TextInput
       value={email}
       onChange={onInputChange}
       name='email'
-      placeholder='Your Email'
+      label='Email'
     />
-    <br />
   </form>,
   <Button
-    className='absolute w-100 bottom-0'
+    className='absolute w-100 bottom-0 tc'
     onClick={submitUserDetails}
     >
-    Sign Up
+    Next
   </Button>
 ]
 

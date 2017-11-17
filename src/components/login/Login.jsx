@@ -42,8 +42,8 @@ class SignUpForm extends Component {
     } = this.state
 
     return (
-      <div className='tc'>
-        <h1 className='dark-gray f3'> Welcome to cal </h1>
+      <div className='min-h-100'>
+        <h1 className='dark-gray f3 tc pt3 mt0'> Welcome to cal </h1>
         {
           !userDetailsSubmitted ? (
             <NameEmailForm

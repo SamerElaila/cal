@@ -14,13 +14,13 @@ const AuthCodeForm = ({ authenticationCode, onInputChange, login }) => [
     <TextInput
       name='authenticationCode'
       value={authenticationCode}
-      placeholder='code'
+      label='code'
       onChange={onInputChange}
     />
   </form>,
   <Link to='/' className='link black'>
     <Button
-      className='absolute w-100 bottom-0'
+      className='absolute w-100 bottom-0 tc'
       onClick={login}
     >
       Login
