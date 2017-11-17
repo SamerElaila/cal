@@ -30,14 +30,13 @@ class NameDescriptionForm extends Component {
           onChange={onChange}
           value={ticketQuantity}
         />
-        <Link to={`/`} className='link black'>
-          <Button
-            className='tc absolute w-100 bottom-0'
-            onClick={submitEvent}
-          >
-            Next
-          </Button>
-        </Link>
+        <Button
+          link='/'
+          className='tc absolute w-100 bottom-0'
+          onClick={submitEvent}
+        >
+          Next
+        </Button>
       </div>
     )
   }

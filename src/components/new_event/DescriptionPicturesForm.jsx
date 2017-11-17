@@ -13,8 +13,7 @@ class DescriptionPicturesForm extends Component {
       onChange,
       images
     } = this.props
-
-    // <div className='relative min-h-100'>
+    
     return (
       <div>
         <div className='w-100 pa4 tc f4 lh-copy'>
@@ -32,13 +31,12 @@ class DescriptionPicturesForm extends Component {
           value={images}
           onChange={onChange}
           />,
-        <Link to={`${match.url}/location`} className='link black'>
-          <Button
-            className='tc absolute w-100 bottom-0'
-            >
-            Next
-          </Button>
-        </Link>
+        <Button
+          link={`${match.url}/location`}
+          className='tc absolute w-100 bottom-0'
+          >
+          Next
+        </Button>
       </div>
     )
   }

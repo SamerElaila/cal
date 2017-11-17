@@ -24,13 +24,12 @@ class NameDescriptionForm extends Component {
           onChange={onChange}
           value={location}
         />,
-        <Link to={`${match.url}/tickets`} className='link black'>
-          <Button
-            className='tc absolute w-100 bottom-0'
-          >
-            {isEmpty ? 'Skip' : 'Next'}
-          </Button>
-        </Link>
+        <Button
+          link={`${match.url}/tickets`}
+          className='tc absolute w-100 bottom-0'
+        >
+          {isEmpty ? 'Skip' : 'Next'}
+        </Button>
       </div>
     )
   }

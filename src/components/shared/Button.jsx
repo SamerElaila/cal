@@ -1,16 +1,21 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 class Button extends Component {
   render() {
-    const { onClick } = this.props
-    return (
-      <div
-        className={`bg-light-red pa3 f3 ${this.props.className}`}
+    const { onClick, link } = this.props
+    const inner = (
+      <button
+        className={`bg-light-red pa3 f3 bw0 ${this.props.className}`}
         onClick={onClick}
         >
         {this.props.children}
-      </div>
+      </button>
     )
+
+    return link
+      ? <Link className='link black' to={link}> {inner} </Link>
+      : inner
   }
 }
 export default Button

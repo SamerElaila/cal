@@ -24,13 +24,12 @@ class NameForm extends Component {
           value={eventName}
           autoFocus
         />
-        <Link to={`${match.url}/details`} className='link black'>
-          <Button
-            className='tc absolute w-100 bottom-0'
-          >
-            Next
-          </Button>
-        </Link>
+        <Button
+          link={`${match.url}/details`}
+          className='tc absolute w-100 bottom-0'
+        >
+          Next
+        </Button>
       </div>
     )
   }
