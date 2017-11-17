@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 
 import TextInput from '../shared/TextInput'
 import Button from '../shared/Button'

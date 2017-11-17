@@ -4,22 +4,16 @@ import Button from '../shared/Button'
 import pluto from './pluto.png'
 
 const ImageGallery = () => {
-  const imageFixtureUrl = './pluto.png'
   return (
     <div className='w-100 vh-50'>
       <img
+        alt='event'
         className='w-100 h-100'
         src={pluto}
       />
     </div>
   )
 }
-
-const TicketDetails = ({ ticketPrice, ticketQuantity }) =>
-  <div>
-    Tickets price: <span className='b'>{ticketPrice}</span><br />
-    Tickets available: <span className='b'>{ticketQuantity}</span>
-  </div>
 
 const Event = props => {
   if (typeof props.event === 'undefined') return '404'
@@ -29,8 +23,7 @@ const Event = props => {
       eventName,
       description,
       ticketPrice,
-      ticketQuantity,
-      images
+      ticketQuantity
     }
   } = props
 

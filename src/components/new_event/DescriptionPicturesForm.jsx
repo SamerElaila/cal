@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 
 import TextArea from '../shared/TextArea'
 import ImageUpload from '../shared/ImageUpload'
@@ -13,7 +12,7 @@ class DescriptionPicturesForm extends Component {
       onChange,
       images
     } = this.props
-    
+
     return (
       <div>
         <div className='w-100 pa4 tc f4 lh-copy'>
