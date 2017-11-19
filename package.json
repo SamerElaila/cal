@@ -1,0 +1,14 @@
+{
+  "name": "cal",
+  "version": "1.0.0",
+  "description": "watch this space",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "dev": "cd client && npm start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "@des-des",
+  "license": "ISC"
+}
