@@ -5,6 +5,7 @@ import Login from './components/login/Login'
 import Events from './containers/Events'
 import Event from './containers/Event'
 import NewEvent from './containers/NewEvent'
+import EditEvent from './containers/EditEvent'
 
 export default () =>
   <Router>
@@ -14,6 +15,7 @@ export default () =>
         <div>
           <Route exact path='/' component={Events}/>
           <Route path='/new-event' component={NewEvent}/>
+          <Route path='/edit-event/:eventId' component={EditEvent}/>
           <Route path='/events/:eventId' component={Event}/>
         </div>
       )}/>
