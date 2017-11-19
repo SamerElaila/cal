@@ -6,7 +6,16 @@
   "dependencies": {},
   "devDependencies": {},
   "scripts": {
-    "dev": "cd client && npm start",
+    "client:init": "cd client && npm i",
+    "client:dev": "cd client && npm start",
+    "client:build": "cd client && npm run build && cp -r build ../server/client_build",
+    "server:init": "cd server && npm i",
+    "server:start": "cd server && npm start",
+    "init": "npm run client:init && npm run server:init",
+    "build": "npm run client:build",
+    "start": "npm run server:start",
+    "postinstall": "npm run init && npm run build",
+    "dev": "npm run server:dev & npm run client:dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "@des-des",
