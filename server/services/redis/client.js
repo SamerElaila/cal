@@ -1,4 +1,3 @@
-const { promisify } = require('util')
 const redis = require('redis')
 
-module.exports = promisify(redis.createClient())
+module.exports = redis.createClient()

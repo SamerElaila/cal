@@ -1,4 +1,4 @@
 module.exports = {
-  users: require('./user.js')
+  users: require('./users.js'),
   events: require('./events.js')
 }

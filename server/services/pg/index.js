@@ -1,1 +1,4 @@
-module.exports.start = require('./schema/').then(() => require('./model/'))
+module.exports = {
+  ...require('./model/'),
+  start: require('./schema/').initDb
+}

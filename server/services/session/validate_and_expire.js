@@ -1,4 +1,4 @@
-const jwt = require('jwt')
+const jwt = require('jsonwebtoken')
 
 const { redis: { session: sessionStore } } = require('../')
 const { JWT_SECRET } = require('../../config.js')

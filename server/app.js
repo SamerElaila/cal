@@ -17,7 +17,7 @@ app
   .use('/api', apiRouter)
 
 
-promise.all(Object
+Promise.all(Object
   .keys(services)
   .map(serviceName => {
     return services[serviceName]
@@ -29,9 +29,9 @@ promise.all(Object
         }
       })
       .catch(err => {
-        console.error(`Service ${serviceName} failed to start`))
+        console.error(`Service ${serviceName} failed to start`)
         return Promise.reject(err)
-      }
+      })
   })
 ).then(() => {
   app.listen(port, err => {
