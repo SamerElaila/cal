@@ -24,5 +24,13 @@ module.exports = {
 
     return events
       .create(Object.assign({}, event, { userId }))
+  },
+  update: (req, res) => {
+    const {
+      eventId
+    } = req.params
+
+    return events
+      .update(req.payload)
   }
 }

@@ -1,5 +1,5 @@
 module.exports = ({ sessionService, emailService, loginService }) => ({
-  generateCode: (req, res, next) => {
+  generateLoginCode: (req, res, next) => {
     const { email } = req.payload
 
     generateCode(email)

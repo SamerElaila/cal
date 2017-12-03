@@ -6,3 +6,6 @@ npm-debug.log
 
 # client build
 client_build
+
+# keys, etc
+config.js

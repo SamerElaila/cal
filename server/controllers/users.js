@@ -23,7 +23,7 @@ module.exports = {
     return users
       .update(withId)
   },
-  create = (req, res) => {
+  create: (req, res) => {
     const {
       payload: user
     } = req

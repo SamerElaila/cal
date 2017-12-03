@@ -1,41 +1,27 @@
 const express = require('express')
 const path = require('path')
+const crashpad = require('crashpad')
 
-const routes = require('./routes/')
+const endpoints = require('./endpoints/')
+const middlewares = require('./middleware/')
 const services = require('./services/')
 
+const app = express()
 const port = process.env.PORT || 3000
 
-const app = express()
-
 const apiRouter = new express.Router()
-  .use('/users', routes.users)
-  .use('/events', routes.events)
+  .use('/users', endpoints.users)
+  .use('/events', endpoints.events)
+  // .use('/auth', endpoints.auth)
 
 app
-  .use('/', routes.app)
-  .use('/api', apiRouter)
+  .use('/', express.static(path.join(__dirname, 'public')))
+  .use('/api', middlewares.authenticate(), apiRouter)
+  .use(crashpad())
 
-
-Promise.all(Object
-  .keys(services)
-  .map(serviceName => {
-    return services[serviceName]
-      .start()
-      .then(res => {
-        console.log(`Service ${serviceName} sucessfully started`)
-        if (res) {
-          console.log(`${serviceName}: ${res}`)
-        }
-      })
-      .catch(err => {
-        console.error(`Service ${serviceName} failed to start`)
-        return Promise.reject(err)
-      })
-  })
-).then(() => {
+services.start().then(() => {
   app.listen(port, err => {
-    if (err) throw err
+    if (err) return Promise.reject(err)
 
     console.log(`Server started on port ${port}`);
   })
