@@ -1,7 +1,7 @@
 const snakeWord = word => {
   const out = []
 
-  for (let i = 0, j = 0; i < word.len; i++, j++) {
+  for (let i = 0, j = 0; i < word.length; i++, j++) {
     if (word[i].isUpperCase) {
       const c = word[i].toLowerCase()
       if (i === 0) {
@@ -17,6 +17,8 @@ const snakeWord = word => {
 
     out[j] = word[i]
   }
+
+  return out.join('')
 }
 
 module.exports = obj => {

@@ -6,5 +6,8 @@ module.exports = () => new Promise((resolve, reject) => {
     user.increments('id').primary()
     user.string('name')
     user.string('email')
-  }).then(resolve).catch(reject)
+  }).then(resolve).catch(error => {
+    console.log('oh no!', error);
+    reject(error)
+  })
 })

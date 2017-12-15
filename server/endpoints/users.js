@@ -2,15 +2,15 @@ const express = require('express')
 
 const { users } = require('../controllers/')
 
-const router = new express.Router()
+const userEndpoint = new express.Router({ mergeParams: true })
 
-router
+userEndpoint
   .route('/')
     .post(users.create)
 
-router
+userEndpoint
   .route('/:userId')
     .get(users.getById)
     .put(users.update)
 
-module.exports = router
+module.exports = userEndpoint

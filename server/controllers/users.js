@@ -25,10 +25,13 @@ module.exports = {
   },
   create: (req, res) => {
     const {
-      payload: user
+      body: user
     } = req
+
+    console.log(req.body);
 
     return users
       .create(user)
+      .then(result => res.json(result))
   }
 }

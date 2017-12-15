@@ -10,6 +10,8 @@ const camelWord = word => {
 
     out[j] = word[i]
   }
+
+  return out.join('')
 }
 
 module.exports = obj => {

@@ -1,38 +1,30 @@
 const jwt = require('jwt')
+const boom = require('boom')
 
 const { redis: { session: sessionStore } } = require('../')
 const { JWT_SECRET } = require('../../config.js')
 
 const { name, errorTypes } = require('./constants.js')
 
-const createError = require('../../utils/createError.js')(name)
-
-const createJWT = JWTContent => new Promise((resove, reject) => {
+const createJWT = claims => new Promise((resove, reject) => {
+  const JWTContent = {
+    ...claims,
+    iat: Date.now()
+  }
   jwt.sign(JWTContent, JWT_SECRET, (err, sessionJWT) => {
-    if (err) {
-      return reject(createError({
-        payload: err
-      }))
-    }
-
+    if (err) return reject(boom.badImplementation('Failed to create session'))
 
     return resolve(sessionJWT)
   })
 })
 
-module.export = JWTContent => {
+module.exports = JWTContent => {
   const { sessionType } = JWTContent
-  const sessionJWT = createJWT(JWTContent)
+  createJWT(JWTContent).then(sessionJWT => )
 
-
-    if (userId === undefined) {
-      return Promise.reject(createError({
-        errorType: errorTypes.INVALID_SESSION
-      })())
-    }
 
     return sessionStore
-      .delete(sessionJWT)
+      .create(LOGGED_IN, sessionJWT, )
       .then(() => createJWT(decoded))
       .then(freshSessionJWT =>
         sessionStore.create(freshSessionJWT, userId)

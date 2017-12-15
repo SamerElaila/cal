@@ -8,29 +8,34 @@ module.exports = {
 
     return events
       .get(eventId)
-      .then(camel)
   },
-  getByCreatorId(req, res) {
+  getAll(req, res) {
     const { userId } = req.params
 
+    console.log(req.url);
+
     return events
-      .getByCreatorId(userId)
+      .getByUserId(userId)
+      .then(result => { res.json(result) })
   },
   create(req, res) {
     const {
-      user: { userId },
-      payload: event
+      params: { userId },
+      payload
     } = req
 
     return events
-      .create(Object.assign({}, event, { userId }))
+      .create(Object.assign({}, payload, { userId }))
+      .then(result => { res.json(result) })
   },
   update: (req, res) => {
     const {
-      eventId
-    } = req.params
+      params: { eventId },
+      payload
+    } = req
 
     return events
-      .update(req.payload)
+      .update(Object.assign({}, payload, { eventId }))
+      .then(result => { res.json(result) })
   }
 }

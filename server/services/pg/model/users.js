@@ -7,8 +7,12 @@ module.exports = {
   get: id => users
     .where({ id })
     .then(camel),
-  create: user => users
-    .insert(snake(user)),
+  create: user => {
+    console.log('inserting', user);
+    console.log('snake', snake(user));
+    return users
+      .insert(snake(user))
+  },
   update: user => users
     .update(snake(user))
 }
