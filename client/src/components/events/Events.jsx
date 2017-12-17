@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import Button from '../shared/Button'
+import { Fab } from 'rmwc/Fab'
 import NoEvents from './NoEvents'
 import Event from './Event'
 
@@ -19,9 +19,9 @@ class Events extends Component {
       <div>
         { events.map(event => <Event {...event} />) }
         <div className='w-100 tc'>
-          <Button link='/new-event'>
-            Create new event
-          </Button>
+          <a href='/new-event' className='absolute right-2 bottom-2'>
+            <Fab>add</Fab>
+          </a>
         </div>
       </div>
     )

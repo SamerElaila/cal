@@ -1,4 +1,5 @@
 import React from 'react'
+import { Card, CardPrimary, CardTitle } from 'rmwc/Card'
 import { Link } from 'react-router-dom'
 
 const Event = props =>
@@ -7,9 +8,13 @@ const Event = props =>
     key={`event-${props.id}`}
     className='w-100 pa2 link black'
   >
-    <div className='w-100 pa2 b--mid-gray ba bw1 tc f3'>
-      {props.name}
-    </div>
+    <Card className='mh3'>
+      <CardPrimary>
+        <CardTitle>
+          {props.name}
+        </CardTitle>
+      </CardPrimary>
+    </Card>
   </Link>
 
 export default Event

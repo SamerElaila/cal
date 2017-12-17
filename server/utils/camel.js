@@ -1,5 +1,4 @@
 const camelWord = word => {
-  console.log({ word });
   const out = []
 
   for (let i = 0, j = 0; i < word.length; i++, j++) {
