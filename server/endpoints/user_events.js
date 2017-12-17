@@ -6,12 +6,7 @@ const router = new express.Router({ mergeParams: true })
 
 router
   .route('/')
-    .get((req, res, next) => {
-      console.log('in correct route!', req.url);
-      console.log(req.params);
-
-      userEvents.getAll(req, res, next)
-    })
+    .get(userEvents.getAll)
     .post(userEvents.create)
 
 router

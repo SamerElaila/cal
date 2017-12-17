@@ -1,18 +1,20 @@
+const isUpper = c => c.toUpperCase() === c;
+
 const snakeWord = word => {
   const out = []
 
   for (let i = 0, j = 0; i < word.length; i++, j++) {
-    if (word[i].isUpperCase) {
+    if (isUpper(word[i])) {
       const c = word[i].toLowerCase()
       if (i === 0) {
         out[j] = c
-        break
+        continue
       }
 
       out[j] = '_'
       out[j+1] = c
       j++
-      break
+      continue
     }
 
     out[j] = word[i]

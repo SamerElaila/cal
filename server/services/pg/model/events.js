@@ -7,8 +7,13 @@ module.exports = {
   getByUserId: creator_id => events
     .where({ creator_id })
     .then(camel),
-  create: event => events
-    .insert(snake(event)),
+  create: event => {
+    console.log('WOOP');
+    console.log(event);
+    console.log(snake(event));
+    return events
+      .insert(snake(event))
+  },
   update: event => events
     .update(snake(event))
 }

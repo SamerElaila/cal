@@ -1,15 +1,16 @@
 import auth0 from 'auth0-js';
+import decodeJWT from 'jwt-decode'
 
 import history from './history';
 
-export default class Auth {
+class Auth {
   auth0 = new auth0.WebAuth({
     domain: 'cal.eu.auth0.com',
     clientID: 'M80DZP5cMfPmVDGc6R77nXl3lGKc86Lf',
     redirectUri: 'http://localhost:3000/callback',
-    audience: 'https://cal.eu.auth0.com/userinfo',
+    audience: 'cal-test-api',
     responseType: 'token id_token',
-    scope: 'openid'
+    scope: 'openid profile read:messages'
   });
 
   login() {
@@ -21,15 +22,17 @@ export default class Auth {
     this.logout = this.logout.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
     this.isAuthenticated = this.isAuthenticated.bind(this);
+    this.getUserId = this.getUserId.bind(this);
+    this.getAccessToken = this.getAccessToken.bind(this);
   }
 
   handleAuthentication() {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
-        history.replace('/home');
+        history.replace('/');
       } else if (err) {
-        history.replace('/home');
+        history.replace('/');
         console.log(err);
       }
     });
@@ -42,7 +45,7 @@ export default class Auth {
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
     // navigate to the home route
-    history.replace('/home');
+    history.replace('/');
   }
 
   logout() {
@@ -51,7 +54,7 @@ export default class Auth {
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
     // navigate to the home route
-    history.replace('/home');
+    history.replace('/');
   }
 
   isAuthenticated() {
@@ -60,4 +63,14 @@ export default class Auth {
     let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
     return new Date().getTime() < expiresAt;
   }
+
+  getAccessToken() {
+    return localStorage.getItem('access_token');
+  }
+
+  getUserId() {
+    return decodeJWT(this.getAccessToken()).sub
+  }
 }
+
+export default new Auth()

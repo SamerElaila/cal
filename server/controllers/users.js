@@ -5,8 +5,8 @@ const { pg: { users } } = require('../services/')
 module.exports = {
   getById: (req, res) => {
     const {
-      userId
-    } = req.params
+      sub: userId
+    } = req.user
 
     return users
       .get(userId)

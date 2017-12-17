@@ -4,6 +4,7 @@ import Router from './Router'
 
 import store from './store'
 import '../node_modules/tachyons/css/tachyons.css';
+import '../node_modules/material-components-web/dist/material-components-web.css'
 
 class App extends Component {
   render() {

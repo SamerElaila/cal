@@ -1,18 +1,20 @@
-const camel = require('../utils/camel.js')
-const snake = require('../utils/snake.js')
+const boom = require('boom')
+
 const { pg: { events } } = require('../services/')
 
 module.exports = {
   get: (req, res) => {
-    const { eventId } = req.params
+    const {
+      params: { eventId, userId }
+    } = req.params
 
     return events
       .get(eventId)
   },
   getAll(req, res) {
-    const { userId } = req.params
-
-    console.log(req.url);
+    const {
+      params: { userId }
+    } = req.user
 
     return events
       .getByUserId(userId)
@@ -25,17 +27,24 @@ module.exports = {
     } = req
 
     return events
-      .create(Object.assign({}, payload, { userId }))
+      .create(Object.assign({}, payload, { creatorId: userId }))
       .then(result => { res.json(result) })
   },
-  update: (req, res) => {
+  update: (req, res, next) => {
     const {
-      params: { eventId },
+      params: { eventId, userId },
       payload
     } = req
 
     return events
+      .get(eventId)
+      .then(event => {
+        if (event.creatorId !== userId) return reject(boom.notFound())
+
+        return event
+      })
       .update(Object.assign({}, payload, { eventId }))
       .then(result => { res.json(result) })
+      .catch(next)
   }
 }

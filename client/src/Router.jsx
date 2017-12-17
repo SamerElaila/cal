@@ -7,10 +7,8 @@ import Event from './containers/Event'
 import NewEvent from './containers/NewEvent'
 import EditEvent from './containers/EditEvent'
 import Callback from './components/login/CallbackAuth0';
-import history from './history'
-import Auth from './auth';
-
-const auth = new Auth();
+import history from './lib/history'
+import auth from './lib/auth';
 
 const handleAuthentication = (nextState, replace) => {
   if (/access_token|id_token|error/.test(nextState.location.hash)) {

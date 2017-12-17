@@ -1,3 +1,4 @@
 module.exports = {
-  authenticate: require('./authenticate.js')
-}
+  checkJwt: require('./check-jwt.js'),
+  authoriseUserId: require('./authorise_user_id.js')
+};

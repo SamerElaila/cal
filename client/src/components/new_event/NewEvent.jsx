@@ -26,6 +26,7 @@ class NewEvent extends Component {
   }
 
   submitEvent = () => {
+    console.log('SUBMIT EVENT CALLED');
     const {
       props: { createEvent },
       state: eventData

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Button from 'rmwc/Button';
+import { Button } from 'rmwc/Button';
 import { Toolbar, ToolbarRow, ToolbarTitle, ToolbarSection } from 'rmwc/Toolbar';
 
 class Login extends Component {
@@ -28,18 +28,26 @@ class Login extends Component {
 
     return (
       <div>
-        <Toolbar>
+        <Toolbar waterfall>
           <ToolbarRow>
             <ToolbarSection alignStart>
               <ToolbarTitle> Auth0 - React </ToolbarTitle>
             </ToolbarSection>
             <ToolbarSection alignEnd>
             { isAuthenticated() ? (
-                <Button onClick={this.logout}>
+                <Button
+                  raised
+                  theme={['secondary-bg', 'text-primary-on-secondary']} onClick={this.logout}
+                  className='ma2'
+                >
                   Log Out
                 </Button>
               ) : (
-                <Button onClick={this.login}>
+                <Button
+                  raised
+                  theme={['secondary-bg', 'text-primary-on-secondary']} onClick={this.login}
+                  className='ma2'
+                >
                   Log In
                 </Button>
               )
