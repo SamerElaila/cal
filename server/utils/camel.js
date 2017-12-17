@@ -1,11 +1,12 @@
 const camelWord = word => {
+  console.log({ word });
   const out = []
 
-  for (let i = 0, j = 0; i < word.len; i++, j++) {
+  for (let i = 0, j = 0; i < word.length; i++, j++) {
     if (word[i] === '_') {
       i++
       out[j] = word[i]
-      break
+      continue
     }
 
     out[j] = word[i]

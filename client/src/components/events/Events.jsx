@@ -5,6 +5,11 @@ import NoEvents from './NoEvents'
 import Event from './Event'
 
 class Events extends Component {
+  componentDidMount() {
+    const { fetchEvents } = this.props
+
+    fetchEvents()
+  }
   render() {
     const { events } = this.props
 

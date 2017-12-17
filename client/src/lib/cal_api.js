@@ -16,6 +16,9 @@ user.interceptors.request.use(config => ({
 export const createEvent = ({ payload }) => user
   .post(`event`, payload)
 
+export const fetchEvents = () => user.get('event')
+
 export default {
-  createEvent
+  createEvent,
+  fetchEvents
 }

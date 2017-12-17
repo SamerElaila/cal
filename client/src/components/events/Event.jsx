@@ -8,7 +8,7 @@ const Event = props =>
     className='w-100 pa2 link black'
   >
     <div className='w-100 pa2 b--mid-gray ba bw1 tc f3'>
-      {props.eventName}
+      {props.name}
     </div>
   </Link>
 

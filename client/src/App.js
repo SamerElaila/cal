@@ -3,8 +3,8 @@ import { Provider } from 'react-redux'
 import Router from './Router'
 
 import store from './store'
-import '../node_modules/tachyons/css/tachyons.css';
-import '../node_modules/material-components-web/dist/material-components-web.css'
+import 'tachyons/css/tachyons.css';
+import 'material-components-web/dist/material-components-web.css'
 
 class App extends Component {
   render() {

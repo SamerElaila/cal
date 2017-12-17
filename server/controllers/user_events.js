@@ -14,7 +14,7 @@ module.exports = {
   getAll(req, res) {
     const {
       params: { userId }
-    } = req.user
+    } = req
 
     return events
       .getByUserId(userId)
@@ -23,11 +23,11 @@ module.exports = {
   create(req, res) {
     const {
       params: { userId },
-      payload
+      body
     } = req
 
     return events
-      .create(Object.assign({}, payload, { creatorId: userId }))
+      .create(Object.assign({}, body, { creatorId: userId }))
       .then(result => { res.json(result) })
   },
   update: (req, res, next) => {

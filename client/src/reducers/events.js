@@ -1,27 +1,26 @@
-// import { CREATE_EVENT }  from '../constants/action_types'
+import {
+  FETCH_EVENTS_SUCCESS,
+  FETCH_EVENTS_PENDING
+ }  from '../constants/action_types'
 import { createReducer } from '../utils/redux'
 
 const initialState = {
-  events: [{
-    eventName: 'Eoin\'s Birthday',
-    id: '0',
-    ticketQuantity: 8,
-    ticketPrice: '£20',
-    description: 'come and join eoin is this exciting party offering!\n There will be much fun and a little other stuff? A new line would be boss ..',
-    images: []
-  }],
-  eventsCount: 1
+  events: [],
+  isFetchingEvents: false
 }
 
-// const createEvent = (state, { payload }) => ({
-//   ...state,
-//   events: [
-//     { ...payload, id: state.eventsCount.toString() },
-//     ...state.events
-//   ],
-//   eventsCount: state.eventsCount + 1
-// })
+const fetchEventsPending = (state, { payload }) => ({
+  ...state,
+  isFetchingEvents: true
+})
+
+const fetchEventsSuccess = (state, { payload }) => ({
+  ...state,
+  events: payload.data,
+  isFetchingEvents: false
+})
 
 export default createReducer(initialState, {
-  // [CREATE_EVENT]: createEvent
+  [FETCH_EVENTS_SUCCESS]: fetchEventsSuccess,
+  [FETCH_EVENTS_PENDING]: fetchEventsPending
 })

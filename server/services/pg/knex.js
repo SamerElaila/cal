@@ -6,5 +6,6 @@ module.exports = require('knex')({
     database: 'develop_cal',
     user: 'postgres',
     password: 'postgres'
-  }
+  },
+  debug: true
 })

@@ -29,7 +29,7 @@ class NewEvent extends Component {
     console.log('SUBMIT EVENT CALLED');
     const {
       props: { createEvent },
-      state: eventData
+      state: { images, ...eventData }
     } = this
 
     createEvent(eventData)

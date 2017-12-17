@@ -1,8 +1,17 @@
-import { CREATE_EVENT } from '../constants/action_types.js'
+import {
+  CREATE_EVENT,
+  FETCH_EVENTS
+} from '../constants/action_types.js'
 
-export const createEvent = () => {
-  console.log('IN THE ACTION CREATOR');
+export const createEvent = (payload) => {
   return {
-    type: CREATE_EVENT
+    type: CREATE_EVENT,
+    payload
+  }
+}
+
+export const fetchEvents = () => {
+  return {
+    type: FETCH_EVENTS
   }
 }

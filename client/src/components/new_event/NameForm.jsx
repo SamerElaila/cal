@@ -7,7 +7,7 @@ class NameForm extends Component {
   render() {
     const {
       match,
-      eventName,
+      name,
       onChange
     } = this.props
 
@@ -17,10 +17,10 @@ class NameForm extends Component {
           Enter your event name and description
         </div>
         <TextInput
-          name='eventName'
+          name='name'
           label='Event name'
           onChange={onChange}
-          value={eventName}
+          value={name}
           autoFocus
         />
         <Button
