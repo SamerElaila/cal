@@ -1,4 +1,5 @@
 import { put } from 'redux-saga/effects'
+import history from '../lib/history'
 
 import {
   CREATE_EVENT_PENDING,
@@ -17,6 +18,7 @@ export function* createEvent (action) {
   try {
     const payload = yield calApi.createEvent(action)
     yield put({ type: CREATE_EVENT_SUCCESS, payload })
+    history.push('/')
   } catch (error) {
     yield put({ type: CREATE_EVENT_FAILURE, error })
   }

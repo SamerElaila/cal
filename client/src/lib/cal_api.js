@@ -13,9 +13,7 @@ user.interceptors.request.use(config => ({
   baseURL: `/api/user/${auth.getUserId()}/`
 }))
 
-export const createEvent = ({ payload }) => user
-  .post(`event`, payload)
-
+export const createEvent = ({ payload }) => user.post(`event`, payload)
 export const fetchEvents = () => user.get('event')
 
 export default {

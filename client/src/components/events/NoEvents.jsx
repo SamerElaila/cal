@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-
-import Button from '../shared/Button'
+import { Fab } from 'rmwc/Fab'
 
 class NoEvents extends Component {
   render() {
@@ -11,10 +10,8 @@ class NoEvents extends Component {
           You have not created any events yet
         </span>,
         <div className='w-100 tc'>
-          <Link to='/new-event' className='link black dib'>
-            <Button className=''>
-              Create new event
-            </Button>
+          <Link to='/new-event' className='absolute right-2 bottom-2'>
+            <Fab>add</Fab>
           </Link>
         </div>
       </div>

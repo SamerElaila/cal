@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-
 import { Fab } from 'rmwc/Fab'
+import { Link } from 'react-router-dom'
+
 import NoEvents from './NoEvents'
 import Event from './Event'
 
@@ -19,9 +20,9 @@ class Events extends Component {
       <div>
         { events.map(event => <Event {...event} />) }
         <div className='w-100 tc'>
-          <a href='/new-event' className='absolute right-2 bottom-2'>
+          <Link to='/new-event' className='absolute right-2 bottom-2'>
             <Fab>add</Fab>
-          </a>
+          </Link>
         </div>
       </div>
     )

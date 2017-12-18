@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
+import { ToolbarIcon } from 'rmwc/Toolbar'
 
+import Toolbar from '../shared/Toolbar'
 import TextInput from '../shared/TextInput'
-import Button from '../shared/Button'
 
 class NameDescriptionForm extends Component {
   render() {
@@ -14,9 +15,12 @@ class NameDescriptionForm extends Component {
 
     return (
       <div>
-        <div className='w-100 pa4 tc f4 lh-copy'>
-          Enter your event name and description
-        </div>
+        <Toolbar
+          title='New Event'
+          rightActions={[
+              <ToolbarIcon onClick={submitEvent}>send</ToolbarIcon>
+          ]}
+        />
         <TextInput
           name='ticketPrice'
           label='Ticket price'
@@ -29,12 +33,6 @@ class NameDescriptionForm extends Component {
           onChange={onChange}
           value={ticketQuantity}
         />
-        <Button
-          className='tc absolute w-100 bottom-0'
-          onClick={submitEvent}
-        >
-          Next
-        </Button>
       </div>
     )
   }

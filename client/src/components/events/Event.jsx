@@ -10,7 +10,7 @@ const Event = props =>
   >
     <Card className='mh3'>
       <CardPrimary>
-        <CardTitle>
+        <CardTitle large>
           {props.name}
         </CardTitle>
       </CardPrimary>
