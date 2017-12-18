@@ -46,7 +46,7 @@ class NewEvent extends Component {
     return (
       <div>
         <Route exact path={match.url} render={() =>
-          <NameForm {...{ ...state, match, onChange }} />
+          <NameForm {...{ ...state, match, onChange, submitEvent }} />
         }/>
         <Route path={`${match.url}/details`} render={() =>
           <DescriptionPicturesForm {...{ ...state, match, onChange }} />

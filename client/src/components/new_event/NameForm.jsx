@@ -11,7 +11,8 @@ class NameForm extends Component {
       match,
       name,
       description,
-      onChange
+      onChange,
+      submitEvent
     } = this.props
 
     return (
@@ -20,9 +21,7 @@ class NameForm extends Component {
         <Toolbar
           title='New Event'
           rightActions={[
-            <Link className='link' to={`${match.url}/details`}>
-              <ToolbarIcon>chevron_right</ToolbarIcon>
-            </Link>
+            <ToolbarIcon onClick={submitEvent}>send</ToolbarIcon>
           ]}
         />
       <div className='pa3 f3'>
@@ -37,12 +36,10 @@ class NameForm extends Component {
           <TextField fullwidth textarea
             label="description"
             rows={4}
-            rootProps={{
-              onChange: onChange,
-              autoFocus: true,
-              value: description,
-              name: 'description'
-            }}
+            onChange={onChange}
+            autoFocus={true}
+            value={description}
+            name='description'
           />
         </div>
       </div>

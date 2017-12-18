@@ -8,5 +8,5 @@ export const eventsSelector = state => {
 
 export const routeEventSelector = createSelector(
   [eventsSelector, routeParamsSelector],
-  (events, routeParams) => events.filter(event => event.id === routeParams.eventId)[0]
+  (events, routeParams) => events.filter(event => event.id.toString() === routeParams.eventId)[0]
 )

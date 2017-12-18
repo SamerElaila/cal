@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Fab } from 'rmwc/Fab'
 import { Link } from 'react-router-dom'
 
+import Toolbar from '../shared/Toolbar'
 import NoEvents from './NoEvents'
 import Event from './Event'
 
@@ -18,6 +19,7 @@ class Events extends Component {
 
     return (
       <div>
+        <Toolbar />
         { events.map(event => <Event {...event} />) }
         <div className='w-100 tc'>
           <Link to='/new-event' className='absolute right-2 bottom-2'>
