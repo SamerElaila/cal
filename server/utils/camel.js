@@ -4,7 +4,7 @@ const camelWord = word => {
   for (let i = 0, j = 0; i < word.length; i++, j++) {
     if (word[i] === '_') {
       i++
-      out[j] = word[i]
+      out[j] = word[i].toUpperCase()
       continue
     }
 

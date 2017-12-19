@@ -5,12 +5,6 @@ const { users } = require('../controllers/')
 const userEndpoint = new express.Router({ mergeParams: true })
 
 userEndpoint
-  .route('/')
-    .post(users.create)
-
-userEndpoint
-  .route('/:userId')
-    .get(users.getById)
-    .put(users.update)
+    .get('/user-info', users.getInfo)
 
 module.exports = userEndpoint

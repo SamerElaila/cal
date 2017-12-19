@@ -7,7 +7,7 @@ module.exports = () => new Promise((resolve, reject) => {
       table.increments('id').primary()
       table.string('name')
       table.string('description')
-      table.string('creator_id')
+      table.string('creator_id') // TODO: ref to user table
       table.string('location')
       table.string('ticket_price')
       table.string('ticket_quantity')

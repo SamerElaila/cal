@@ -15,8 +15,23 @@ user.interceptors.request.use(config => ({
 
 export const createEvent = ({ payload }) => user.post(`event`, payload)
 export const fetchEvents = () => user.get('event')
+export const fetchUserInfo = () => user.get('user-info')
+
+export const stripeConnectCallback = ({ payload }) => {
+  console.log('in da api', payload);
+  return axios({
+    method: 'post',
+    url: '/api/stripe/connect-callback',
+    data: payload,
+    headers: {
+      Authorization: `Bearer ${auth.getAccessToken()}`
+    }
+  })
+}
 
 export default {
   createEvent,
-  fetchEvents
+  fetchEvents,
+  fetchUserInfo,
+  stripeConnectCallback
 }

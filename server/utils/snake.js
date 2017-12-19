@@ -1,4 +1,6 @@
-const isUpper = c => c.toUpperCase() === c;
+const upperRExp = /[A-Z]/
+
+const isUpper = c => upperRExp.test(c);
 
 const snakeWord = word => {
   const out = []

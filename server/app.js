@@ -13,9 +13,11 @@ const app = express()
 const port = process.env.PORT || 4000
 
 app.use(bodyParser.json())
-//
+
 const apiRouter = new express.Router()
+  .use('/user/:userId', middlewares.authoriseUserId, endpoints.users)
   .use('/user/:userId/event', middlewares.authoriseUserId, endpoints.userEvents)
+  .use('/stripe', endpoints.stripe)
 
 app
   .use(morgan('tiny'))

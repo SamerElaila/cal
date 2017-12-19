@@ -7,7 +7,7 @@ class Auth {
   auth0 = new auth0.WebAuth({
     domain: 'cal.eu.auth0.com',
     clientID: 'M80DZP5cMfPmVDGc6R77nXl3lGKc86Lf',
-    redirectUri: 'http://localhost:3000/callback',
+    redirectUri: 'http://localhost:3000/callback/auth0',
     audience: 'cal-test-api',
     responseType: 'token id_token',
     scope: 'openid profile read:messages'
@@ -36,6 +36,12 @@ class Auth {
         console.log(err);
       }
     });
+  }
+
+  handleStripeCallback(routeParams) {
+    const code = routeParams.location.search.split('&code=')[1]
+    console.log(routeParams, code)
+    history.replace('/')
   }
 
   setSession(authResult) {
