@@ -11,6 +11,7 @@ const getClientEnvironment = require('./env');
 const paths = require('./paths');
 console.log(process.env.NODE_ENV);
 const { STRIPE_CLIENT_KEY } = require('../../config.js').stripe
+
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
 const publicPath = '/';
