@@ -22,7 +22,7 @@ const apiRouter = new express.Router()
 app
   .use(morgan('tiny'))
   .use('/', express.static(path.join(__dirname, 'public')))
-  .use('/api', middlewares.checkJwt, apiRouter)
+  .use('/api', middlewares.checkJwt, middlewares.handleNewUsers, apiRouter)
   .use((error, req, res, next) => {
     console.error(error)
     next(error)

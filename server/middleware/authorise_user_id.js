@@ -4,8 +4,6 @@ module.exports = (req, res, next) => {
     user: { sub }
   } = req
 
-  console.log(req.user);
-
   if (userId !== sub) return next(Boom.unauthorised())
 
   next()

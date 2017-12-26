@@ -32,8 +32,6 @@ module.exports = {
 
     const { code } = queryString.parse(stripeCallbackUrlSearch)
 
-    console.log('###########################################################');
-
     console.log({
       qsp: stripeCallbackUrlSearch,
       body: req.body,
@@ -42,7 +40,7 @@ module.exports = {
 
     stripeConnect(code)
       .then(({ stripe_user_id: stripeConnectedAccountId }) => {
-        return users.create({
+        return users.update({
           auth0Id,
           stripeConnectedAccountId
         })
