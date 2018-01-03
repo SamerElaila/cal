@@ -24,9 +24,9 @@ module.exports = { // TODO: User creation detection
       .then(result => result ? result : {}) // and what?
       .then(camel)
       .then(userData => {
-        console.log({userData});
         res.json({
-          stripeConnected: userData && userData.stripeConnectedAccountId
+          stripeConnected: userData && userData.stripeConnectedAccountId,
+          userId: userData.auth0Id
         })
       })
       .catch(next)

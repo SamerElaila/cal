@@ -18,7 +18,7 @@ const apiRouter = new express.Router()
   .use('/user/:userId', middlewares.authoriseUserId, endpoints.users)
   .use('/user/:userId/event', middlewares.authoriseUserId, endpoints.userEvents)
   .use('/stripe', endpoints.stripe)
-  .use('/tickets', endpoints.tickets)
+  .use('/user/:userId/tickets', middlewares.authoriseUserId, endpoints.tickets)
 
 app
   .use(morgan('tiny'))

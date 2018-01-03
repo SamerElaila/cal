@@ -2,6 +2,7 @@ import React from 'react'
 import {  Router, Route, Switch } from 'react-router-dom'
 
 import { stripeConnectCallback } from './actions/stripe'
+import { fetchUserInfo } from './actions/user'
 
 import Login from './components/login/LoginAuth0'
 import Events from './containers/Events'
@@ -27,6 +28,7 @@ export default () =>
       <Route path='/login' render={() => <Login auth={auth} />} />
       <Route path="/callback/auth0" render={(props) => {
           handleAuthentication(props)
+          store.dispatch(fetchUserInfo())
           return <Callback {...props} />
         }}/>
       <Route path="/callback/stripe" render={(props) => {
@@ -34,14 +36,17 @@ export default () =>
         auth.handleStripeCallback(props)
         return <Callback {...props} />
       }}/>
-      <Route path='/' render={() => (
-        <div>
-          <Route exact path='/' component={Events}/>
-          <Route path='/payment-settings' component={PaymentSettings}/>
-          <Route path='/new-event' component={NewEvent}/>
-          <Route path='/edit-event/:eventId' component={EditEvent}/>
-          <Route path='/events/:eventId' component={Event}/>
-        </div>
-      )}/>
+      <Route path='/' render={() => {
+        store.dispatch(fetchUserInfo())
+        return (
+          <div>
+            <Route exact path='/' component={Events}/>
+            <Route path='/payment-settings' component={PaymentSettings}/>
+            <Route path='/new-event' component={NewEvent}/>
+            <Route path='/edit-event/:eventId' component={EditEvent}/>
+            <Route path='/events/:eventId' component={Event}/>
+          </div>
+        )
+      }}/>
     </Switch>
   </Router>

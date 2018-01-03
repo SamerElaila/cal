@@ -1,6 +1,7 @@
 import React, { Component} from 'react'
 import { Button } from 'rmwc/Button'
 import axios from 'axios'
+import auth from '../../lib/auth'
 
 import Toolbar from '../shared/Toolbar'
 import { Elements, CardElement, injectStripe } from 'react-stripe-elements';
@@ -9,16 +10,18 @@ class Payment extends Component {
   handleSubmit = event => {
     const {
       stripe: { createToken },
-      event: { id: eventId }
+      event: { id: eventId },
+      user: { userId }
     } = this.props;
 
     event.preventDefault();
-
     createToken({ name: 'Eoin McCarthy' }).then(({token}) => {
-      console.log('Received Stripe token:', token);
       axios({
-        url: '/api/tickets/buy',
+        url: `/api/user/${userId}/tickets/buy`,
         method: 'post',
+        headers: {
+          Authorization: `Bearer ${auth.getAccessToken()}`
+        },
         data: { eventId, stripeCardToken: token }
       }).then(() => {
         console.log('Ticket brought')
@@ -59,6 +62,7 @@ const Event = props => {
 
   const {
     event,
+    user,
     event: {
       name,
       description//,
@@ -73,7 +77,7 @@ const Event = props => {
       <div className='pa2 f4'> { description } </div>
       <div style={{textAlign: 'center'}} className='w-100 mt5'>
         <Elements>
-          <ElementsPayments event={event}/>
+          <ElementsPayments event={event} user={user}/>
         </Elements>
         <Button raised className='dib'>
           Buy tickets
