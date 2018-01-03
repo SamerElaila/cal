@@ -8,6 +8,7 @@ module.exports = jwt({
     jwksRequestsPerMinute: 5,
     jwksUri: `https://cal.eu.auth0.com/.well-known/jwks.json`
   }),
+  credentialsRequired: false,
   audience: 'cal-test-api',
   issuer: `https://cal.eu.auth0.com/`,
   algorithms: ['RS256']

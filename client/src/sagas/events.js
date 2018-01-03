@@ -15,8 +15,13 @@ import calApi from '../lib/cal_api.js'
 export function* createEvent (action) {
   yield put({ type: CREATE_EVENT_PENDING })
 
+  const event = {
+    ...action,
+    ticketPrice: parseInt(action.ticketPrice, 10)
+  }
+
   try {
-    const payload = yield calApi.createEvent(action)
+    const payload = yield calApi.createEvent(event)
     yield put({ type: CREATE_EVENT_SUCCESS, payload })
     history.push('/')
   } catch (error) {

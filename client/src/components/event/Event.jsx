@@ -1,17 +1,30 @@
 import React, { Component} from 'react'
 import { Button } from 'rmwc/Button'
+import axios from 'axios'
 
 import Toolbar from '../shared/Toolbar'
 import { Elements, CardElement, injectStripe } from 'react-stripe-elements';
 
 class Payment extends Component {
   handleSubmit = event => {
-    const { stripe: { createToken } } = this.props;
+    const {
+      stripe: { createToken },
+      event: { id: eventId }
+    } = this.props;
 
     event.preventDefault();
 
-    createToken({name: 'Jenny Rosen'}).then(({token}) => {
+    createToken({ name: 'Eoin McCarthy' }).then(({token}) => {
       console.log('Received Stripe token:', token);
+      axios({
+        url: '/api/tickets/buy',
+        method: 'post',
+        data: { eventId, stripeCardToken: token }
+      }).then(() => {
+        console.log('Ticket brought')
+      }).catch(e => {
+        console.error(e)
+      })
     });
   }
 
@@ -20,7 +33,7 @@ class Payment extends Component {
         <form onSubmit={this.handleSubmit}>
         <label>
           Card details
-          <CardElement style={{base: {fontSize: '18px'}}} />
+          <CardElement style={{ base: {fontSize: '18px' }}} />
         </label>
         <button>Confirm order</button>
       </form>
@@ -45,6 +58,7 @@ const Event = props => {
   if (typeof props.event === 'undefined') return '404'
 
   const {
+    event,
     event: {
       name,
       description//,
@@ -59,7 +73,7 @@ const Event = props => {
       <div className='pa2 f4'> { description } </div>
       <div style={{textAlign: 'center'}} className='w-100 mt5'>
         <Elements>
-          <ElementsPayments />
+          <ElementsPayments event={event}/>
         </Elements>
         <Button raised className='dib'>
           Buy tickets

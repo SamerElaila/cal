@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
 
 import Toolbar from '../shared/Toolbar'
-import { Link } from 'react-router-dom'
 import { ToolbarIcon } from 'rmwc/Toolbar'
 import { TextField } from 'rmwc/TextField'
 
 class NameForm extends Component {
   render() {
     const {
-      match,
       name,
+      ticketPrice,
       description,
       onChange,
       submitEvent
@@ -24,7 +23,7 @@ class NameForm extends Component {
             <ToolbarIcon onClick={submitEvent}>send</ToolbarIcon>
           ]}
         />
-      <div className='pa3 f3'>
+        <div className='pa3 f3'>
           <TextField fullwidth
               label="Event name"
               onChange={onChange}
@@ -32,12 +31,19 @@ class NameForm extends Component {
               name='name'
             />
         </div>
+        <div className='pa3 f3'>
+          <TextField fullwidth
+            label='ticket price'
+            onChange={onChange}
+            value={ticketPrice}
+            name='ticketPrice'
+            />
+        </div>
         <div className='pa3 mt2'>
           <TextField fullwidth textarea
             label="description"
             rows={4}
             onChange={onChange}
-            autoFocus={true}
             value={description}
             name='description'
           />
