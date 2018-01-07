@@ -16,10 +16,9 @@ module.exports = {
     .join(
       USERS_TABLE_NAME,
       `${USERS_TABLE_NAME}.auth0_id`,
-      '=',
       `${EVENTS_TABLE_NAME}.creator_id`
     )
-    .where({ [`${EVENTS_TABLE_NAME}.id`]: console.log(id) || id })
+    .where({ [`${EVENTS_TABLE_NAME}.id`]: id })
     .then(res => camel(res[0]))
   ,
   create: event => events()

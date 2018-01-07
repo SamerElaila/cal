@@ -6,6 +6,7 @@ import { fetchUserInfo } from './actions/user'
 
 import Login from './components/login/LoginAuth0'
 import Events from './containers/Events'
+import Tickets from './containers/Tickets'
 import Event from './containers/Event'
 import NewEvent from './containers/NewEvent'
 import EditEvent from './containers/EditEvent'
@@ -41,6 +42,7 @@ export default () =>
         return (
           <div>
             <Route exact path='/' component={Events}/>
+            <Route path='/tickets' component={Tickets}/>
             <Route path='/payment-settings' component={PaymentSettings}/>
             <Route path='/new-event' component={NewEvent}/>
             <Route path='/edit-event/:eventId' component={EditEvent}/>

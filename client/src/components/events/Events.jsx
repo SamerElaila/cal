@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 import { Menu, MenuItem } from 'rmwc/Menu'
 
 import Toolbar from '../shared/Toolbar'
-import NoEvents from './NoEvents'
 import Event from './Event'
 
 class Events extends Component {
@@ -43,6 +42,16 @@ class Events extends Component {
       		<MenuItem>
             <Link to='/payment-settings' className='link'>
               Payment Settings
+            </Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to='/tickets' className='link'>
+              Your tickets
+            </Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to='/scan' className='link'>
+              Scan tickets
             </Link>
           </MenuItem>
       	</Menu>

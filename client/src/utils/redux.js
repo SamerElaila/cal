@@ -1,3 +1,5 @@
+import { connect as reduxConnect } from 'react-redux'
+
 export const createReducer = (initialState, reducers) =>
   (state = initialState, action) => {
     const reducer = reducers[action.type]
@@ -13,3 +15,32 @@ export const createStateSelector = selectors => (state, props) =>
 
     return newState
   }, {})
+
+export const connect = (mapStateToProps, mapDispatchToProps, mergeProps) =>
+  reduxConnect(
+    createStateSelector(mapStateToProps),
+    mapDispatchToProps,
+    mergeProps
+  )
+// export const requestHORInitalState = {
+//   requestStatus: undefined,
+//   error: undefined,
+//   payload: undefined
+// }
+
+// export const requestHOR = actionName => createReducer(requestHORInitalState, {
+//   [`${actionName}_PENDING`]: (state, action) => ({
+//     ...state,
+//     requestStatus: PENDING
+//   })
+//   [`${actionName}_FAILURE`]: (state, action) => ({
+//     ...state,
+//     requestStatus: ERROR,
+//     error: action.error
+//   })
+//   [`${actionName}_SUCCESS`]: (state, action) => ({
+//     ...state,
+//     requestStatus: SUCCESS,
+//     payload: action.payload
+//   })
+// })
