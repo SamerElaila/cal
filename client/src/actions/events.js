@@ -1,9 +1,6 @@
-import {
-  CREATE_EVENT,
-  FETCH_EVENTS
-} from '../constants/action_types.js'
+import { CREATE_EVENT, FETCH_EVENTS } from '../constants/action_types.js'
 
-export const createEvent = (payload) => {
+export const createEvent = payload => {
   return {
     type: CREATE_EVENT,
     payload

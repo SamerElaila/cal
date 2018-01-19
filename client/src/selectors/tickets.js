@@ -6,7 +6,8 @@ export const ticketIdSelector = (_, props) => props.ticketId
 
 export const ticketsArraySelector = state => {
   const ticketsRequest = state.tickets.ticketsRequest
-  const payload = ticketsRequest.payload &&
+  const payload =
+    ticketsRequest.payload &&
     Object.keys(ticketsRequest.payload).map(k => ticketsRequest.payload[k])
 
   return {
@@ -33,12 +34,12 @@ export const ticketSelector = createSelector(
 
     if (ticketsRequest.payload[ticketId] === undefined) return undefined
 
-    return ({
+    return {
       requestStatus: SUCCESS,
       payload: {
         ...ticketsRequest.payload[ticketId],
         ticketQrRequest: ticketQr
       }
-    })
+    }
   }
 )

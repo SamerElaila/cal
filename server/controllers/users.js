@@ -2,7 +2,8 @@ const camel = require('../utils/camel.js')
 const snake = require('../utils/snake.js')
 const { pg: { users } } = require('../services/')
 
-module.exports = { // TODO: User creation detection
+module.exports = {
+  // TODO: User creation detection
   // getById: (req, res) => {
   //   const {
   //     sub: userId
@@ -13,15 +14,11 @@ module.exports = { // TODO: User creation detection
   //     .then(camel)
   // },
   getInfo: (req, res, next) => {
-    const {
-      user: {
-        sub: userId
-      }
-    } = req
+    const { user: { sub: userId } } = req
 
     return users
       .get(userId)
-      .then(result => result ? result : {}) // and what?
+      .then(result => (result || {})) // and what?
       .then(camel)
       .then(userData => {
         res.json({
@@ -30,7 +27,7 @@ module.exports = { // TODO: User creation detection
         })
       })
       .catch(next)
-  }//,
+  } //,
   // update: (req, res) => {
   //   const {
   //     userId,

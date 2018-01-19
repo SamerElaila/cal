@@ -13,7 +13,7 @@ import { stripeConnectCallback } from './stripe'
 import { fetchUserInfo } from './user'
 import { fetchTicketQR, fetchTickets } from './tickets'
 
-export default function* rootSaga() {
+export default function * rootSaga () {
   yield takeEvery(CREATE_EVENT, createEvent)
   yield takeEvery(FETCH_EVENTS, fetchEvents)
   yield takeEvery(STRIPE_CONNECT_CALLBACK, stripeConnectCallback)

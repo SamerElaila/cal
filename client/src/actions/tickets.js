@@ -1,7 +1,4 @@
-import {
-  FETCH_TICKETS,
-  FETCH_TICKET_QR
-} from '../constants/action_types.js'
+import { FETCH_TICKETS, FETCH_TICKET_QR } from '../constants/action_types.js'
 
 export const fetchTickets = () => {
   return {

@@ -1,9 +1,9 @@
 import { put } from 'redux-saga/effects'
 
-export const requestSaga = (actionType, request) =>  {
-  return function* saga(action) {
+export const requestSaga = (actionType, request) => {
+  return function * saga (action) {
     const meta = { initiatorAction: action }
-    
+
     yield put({ type: `${actionType}_PENDING`, meta })
 
     try {

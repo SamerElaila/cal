@@ -1,7 +1,7 @@
 import {
   FETCH_USER_INFO_PENDING,
   FETCH_USER_INFO_SUCCESS
- }  from '../constants/action_types'
+} from '../constants/action_types'
 import { createReducer } from '../utils/redux'
 
 const initialState = {

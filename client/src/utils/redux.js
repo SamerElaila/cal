@@ -1,13 +1,15 @@
 import { connect as reduxConnect } from 'react-redux'
 
-export const createReducer = (initialState, reducers) =>
-  (state = initialState, action) => {
-    const reducer = reducers[action.type]
+export const createReducer = (initialState, reducers) => (
+  state = initialState,
+  action
+) => {
+  const reducer = reducers[action.type]
 
-    if (typeof reducer === 'undefined') return state
+  if (typeof reducer === 'undefined') return state
 
-    return reducer(state, action)
-  }
+  return reducer(state, action)
+}
 
 export const createStateSelector = selectors => (state, props) =>
   Object.keys(selectors).reduce((newState, stateKey) => {
@@ -17,11 +19,7 @@ export const createStateSelector = selectors => (state, props) =>
   }, {})
 
 export const connect = (selectors, mapDispatchToProps, mergeProps) =>
-  reduxConnect(
-    createStateSelector(selectors),
-    mapDispatchToProps,
-    mergeProps
-  )
+  reduxConnect(createStateSelector(selectors), mapDispatchToProps, mergeProps)
 // export const requestHORInitalState = {
 //   requestStatus: undefined,
 //   error: undefined,

@@ -2,7 +2,7 @@ import {
   FETCH_EVENTS_SUCCESS,
   FETCH_EVENTS_FAILURE,
   FETCH_EVENTS_PENDING
- }  from '../constants/action_types'
+} from '../constants/action_types'
 import { createReducer } from '../utils/redux'
 import { SUCCESS, ERROR, PENDING } from '../constants/request_statuses'
 

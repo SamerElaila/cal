@@ -1,6 +1,6 @@
 const upperRExp = /[A-Z]/
 
-const isUpper = c => upperRExp.test(c);
+const isUpper = c => upperRExp.test(c)
 
 const snakeWord = word => {
   const out = []
@@ -14,7 +14,7 @@ const snakeWord = word => {
       }
 
       out[j] = '_'
-      out[j+1] = c
+      out[j + 1] = c
       j++
       continue
     }

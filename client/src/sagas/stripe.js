@@ -4,4 +4,5 @@ import calApi from '../lib/cal_api.js'
 
 export const stripeConnectCallback = requestSaga(
   STRIPE_CONNECT_CALLBACK,
-  calApi.stripeConnectCallback)
+  calApi.stripeConnectCallback
+)

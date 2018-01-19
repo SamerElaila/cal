@@ -4,14 +4,14 @@ module.exports = ({ sessionService, emailService, loginService }) => ({
 
     generateCode(email)
       .then(authCode => sendCode(email, authCode))
-      .then(() => sessionService.create({
-        emailToVerify: email,
-        sessionType: sessionService.sessionTypes.ATTEMPT_LOGIN
-      }))
+      .then(() =>
+        sessionService.create({
+          emailToVerify: email,
+          sessionType: sessionService.sessionTypes.ATTEMPT_LOGIN
+        })
+      )
       .then(loginJWT => {
-        res
-        .status(200)
-        .json({ loginJWT })
+        res.status(200).json({ loginJWT })
       })
       .catch(next)
   },
@@ -19,20 +19,22 @@ module.exports = ({ sessionService, emailService, loginService }) => ({
     const { code } = req.payload
     const { emailToVerify, sessionType } = req.session
 
-    if (sessionType !== sessionService.sessionTypes.ATTEMPT_LOGIN) // invalid token
+    if (sessionType !== sessionService.sessionTypes.ATTEMPT_LOGIN)
+      // invalid token
 
-    validateCode(emailToVerify, code)
-      .then(() => users.getIdFromEmail(emailToVerify))
-      .then(userId =>
-        sessionService.create({
-          sessionType: sessionService.sessionTypes.LOGGED_IN,
-          userId
+      {
+      validateCode(emailToVerify, code)
+        .then(() => users.getIdFromEmail(emailToVerify))
+        .then(userId =>
+          sessionService.create({
+            sessionType: sessionService.sessionTypes.LOGGED_IN,
+            userId
+          })
+        )
+        .then(sessionJWT => {
+          res.status(200).json({ sessionJWT })
         })
-      ).then(sessionJWT => {
-        res
-        .status(200)
-        .json({ sessionJWT })
-      })
-      .catch(next)
+        .catch(next)
+    }
   }
 })

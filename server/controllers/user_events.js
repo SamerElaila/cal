@@ -4,37 +4,28 @@ const { pg: { events } } = require('../services/')
 
 module.exports = {
   get: (req, res) => {
-    const {
-      params: { eventId, userId }
-    } = req.params
+    const { params: { eventId, userId } } = req.params
 
-    return events
-      .get(eventId)
+    return events.get(eventId)
   },
-  getAll(req, res) {
-    const {
-      params: { userId }
-    } = req
+  getAll (req, res) {
+    const { params: { userId } } = req
 
-    return events
-      .getByUserId(userId)
-      .then(result => { res.json(result) })
+    return events.getByUserId(userId).then(result => {
+      res.json(result)
+    })
   },
-  create(req, res) {
-    const {
-      params: { userId },
-      body
-    } = req
+  create (req, res) {
+    const { params: { userId }, body } = req
 
     return events
       .create(Object.assign({}, body, { creatorId: userId }))
-      .then(result => { res.json(result) })
+      .then(result => {
+        res.json(result)
+      })
   },
   update: (req, res, next) => {
-    const {
-      params: { eventId, userId },
-      payload
-    } = req
+    const { params: { eventId, userId }, payload } = req
 
     return events
       .get(eventId)
@@ -44,7 +35,9 @@ module.exports = {
         return event
       })
       .update(Object.assign({}, payload, { eventId }))
-      .then(result => { res.json(result) })
+      .then(result => {
+        res.json(result)
+      })
       .catch(next)
   }
 }

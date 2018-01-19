@@ -1,8 +1,5 @@
 import { requestSaga } from '../utils/saga'
-import {
-  CREATE_EVENT,
-  FETCH_EVENTS
-} from '../constants/action_types'
+import { CREATE_EVENT, FETCH_EVENTS } from '../constants/action_types'
 
 import calApi from '../lib/cal_api.js'
 

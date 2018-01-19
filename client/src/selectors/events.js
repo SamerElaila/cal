@@ -13,8 +13,9 @@ export const routeEventRequestSelector = createSelector(
 
     return {
       ...eventsRequest,
-      payload: payload && payload
-        .filter(event => event.id.toString() === routeParams.eventId)[0]
+      payload:
+        payload &&
+        payload.filter(event => event.id.toString() === routeParams.eventId)[0]
     }
   }
 )

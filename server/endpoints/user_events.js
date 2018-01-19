@@ -6,12 +6,12 @@ const router = new express.Router({ mergeParams: true })
 
 router
   .route('/')
-    .get(userEvents.getAll)
-    .post(userEvents.create)
+  .get(userEvents.getAll)
+  .post(userEvents.create)
 
 router
   .route('/:eventId')
-    .get(userEvents.get)
-    .put(userEvents.update)
+  .get(userEvents.get)
+  .put(userEvents.update)
 
 module.exports = router

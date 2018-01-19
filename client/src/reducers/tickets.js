@@ -5,7 +5,7 @@ import {
   FETCH_TICKET_QR_PENDING,
   FETCH_TICKET_QR_SUCCESS,
   FETCH_TICKET_QR_FAILURE
-}  from '../constants/action_types'
+} from '../constants/action_types'
 import { SUCCESS, ERROR, PENDING } from '../constants/request_statuses'
 import { createReducer } from '../utils/redux'
 
@@ -56,10 +56,10 @@ const fetchTicketQrPending = (state, { payload, meta }) => {
   }
 }
 
-const fetchTicketQrSuccess = (state, { payload, meta })  => {
+const fetchTicketQrSuccess = (state, { payload, meta }) => {
   const { ticketQrRequests } = state
   const { initiatorAction: { payload: { ticketId } } } = meta
-  console.log({meta});
+  console.log({ meta })
 
   return {
     ...state,
