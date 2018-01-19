@@ -4,7 +4,16 @@
   "description": "watch this space",
   "main": "index.js",
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "standard": "^10.0.3"
+  },
+  "standard": {
+    "ignore": [
+      "**/node_modules",
+      "/client/build",
+      "/server/client_build"
+    ]
+  },
   "scripts": {
     "client:init": "cd client && npm i",
     "client:dev": "cd client && npm start",
@@ -16,7 +25,8 @@
     "start": "npm run server:start",
     "postinstall": "npm run init && npm run build",
     "dev": "npm run server:dev & npm run client:dev",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "standard"
   },
   "author": "@des-des",
   "license": "ISC"

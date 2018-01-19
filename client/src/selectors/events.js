@@ -2,11 +2,19 @@ import { createSelector } from 'reselect'
 
 import { routeParamsSelector } from './router'
 
-export const eventsSelector = state => {
-  return state.events.events
+export const eventsRequestSelector = state => {
+  return state.events.eventsRequest
 }
 
-export const routeEventSelector = createSelector(
-  [eventsSelector, routeParamsSelector],
-  (events, routeParams) => events.filter(event => event.id.toString() === routeParams.eventId)[0]
+export const routeEventRequestSelector = createSelector(
+  [eventsRequestSelector, routeParamsSelector],
+  (eventsRequest, routeParams) => {
+    const { payload } = eventsRequest.payload
+
+    return {
+      ...eventsRequest,
+      payload: payload && payload
+        .filter(event => event.id.toString() === routeParams.eventId)[0]
+    }
+  }
 )

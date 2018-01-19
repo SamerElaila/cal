@@ -10,13 +10,13 @@ import { SUCCESS, ERROR, PENDING } from '../constants/request_statuses'
 import { createReducer } from '../utils/redux'
 
 const initialState = {
-  tickets: {},
-  ticketQrs: {}
+  ticketsRequest: {},
+  ticketQrRequests: {}
 }
 
 const fetchTicketsPending = (state, { payload }) => ({
   ...state,
-  tickets: {
+  ticketsRequest: {
     ...state.tickets,
     requestStatus: PENDING
   }
@@ -24,7 +24,7 @@ const fetchTicketsPending = (state, { payload }) => ({
 
 const fetchTicketsSuccess = (state, { payload }) => ({
   ...state,
-  tickets: {
+  ticketsRequest: {
     payload: payload.data.reduce((tickets, ticket) => {
       tickets[ticket.id] = ticket
       return tickets
@@ -35,20 +35,20 @@ const fetchTicketsSuccess = (state, { payload }) => ({
 
 const fetchTicketsFailure = (state, { error }) => ({
   ...state,
-  tickets: {
+  ticketsRequest: {
     error,
     requestStatus: ERROR
   }
 })
 
 const fetchTicketQrPending = (state, { payload, meta }) => {
-  const { ticketQrs } = state
+  const { ticketQrRequests } = state
   const { initiatorAction: { ticketId } } = meta
 
   return {
     ...state,
-    ticketQrs: {
-      ...ticketQrs,
+    ticketQrRequests: {
+      ...ticketQrRequests,
       [ticketId]: {
         requestStatus: PENDING
       }
@@ -57,14 +57,14 @@ const fetchTicketQrPending = (state, { payload, meta }) => {
 }
 
 const fetchTicketQrSuccess = (state, { payload, meta })  => {
-  const { ticketQrs } = state
+  const { ticketQrRequests } = state
   const { initiatorAction: { payload: { ticketId } } } = meta
   console.log({meta});
 
   return {
     ...state,
-    ticketQrs: {
-      ...ticketQrs,
+    ticketQrRequests: {
+      ...ticketQrRequests,
       [ticketId]: {
         requestStatus: SUCCESS,
         payload: payload.data
@@ -74,13 +74,13 @@ const fetchTicketQrSuccess = (state, { payload, meta })  => {
 }
 
 const fetchTicketQrFailure = (state, { error, meta }) => {
-  const { ticketQrs } = state
+  const { ticketQrRequests } = state
   const { initiatorAction: { ticketId } } = meta
 
   return {
     ...state,
-    ticketQrs: {
-      ...ticketQrs,
+    ticketQrRequests: {
+      ...ticketQrRequests,
       [ticketId]: {
         requestStatus: ERROR,
         error

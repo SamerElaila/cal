@@ -1,46 +1,10 @@
-import { put } from 'redux-saga/effects'
-import history from '../lib/history'
-
+import { requestSaga } from '../utils/saga'
 import {
-  CREATE_EVENT_PENDING,
-  CREATE_EVENT_SUCCESS,
-  CREATE_EVENT_FAILURE,
-  FETCH_EVENTS_PENDING,
-  FETCH_EVENTS_SUCCESS,
-  FETCH_EVENTS_FAILURE
+  CREATE_EVENT,
+  FETCH_EVENTS
 } from '../constants/action_types'
 
 import calApi from '../lib/cal_api.js'
 
-export function* createEvent (action) {
-  yield put({ type: CREATE_EVENT_PENDING })
-
-  const event = {
-    ...action,
-    payload: {
-      ...action.payload,
-      ticketPrice: parseInt(action.payload.ticketPrice, 10),
-      ticketQuantity: 5
-
-    }
-  }
-
-  try {
-    const payload = yield calApi.createEvent(event)
-    yield put({ type: CREATE_EVENT_SUCCESS, payload })
-    history.push('/')
-  } catch (error) {
-    yield put({ type: CREATE_EVENT_FAILURE, error })
-  }
-}
-
-export function* fetchEvents (action) {
-  yield put({ type: FETCH_EVENTS_PENDING })
-
-  try {
-    const payload = yield calApi.fetchEvents(action)
-    yield put({ type: FETCH_EVENTS_SUCCESS, payload })
-  } catch (error) {
-    yield put({ type: FETCH_EVENTS_FAILURE, error })
-  }
-}
+export const createEvent = requestSaga(CREATE_EVENT, calApi.createEvent)
+export const fetchEvents = requestSaga(FETCH_EVENTS, calApi.fetchEvents)

@@ -5,7 +5,7 @@ import { SUCCESS } from '../constants/request_statuses'
 export const ticketIdSelector = (_, props) => props.ticketId
 
 export const ticketsArraySelector = state => {
-  const ticketsRequest = state.tickets.tickets
+  const ticketsRequest = state.tickets.ticketsRequest
   const payload = ticketsRequest.payload &&
     Object.keys(ticketsRequest.payload).map(k => ticketsRequest.payload[k])
 
@@ -15,7 +15,7 @@ export const ticketsArraySelector = state => {
   }
 }
 
-export const ticketsSelector = state => state.tickets.tickets
+export const ticketsRequestSelector = state => state.tickets.ticketsRequest
 
 export const ticketQrsSelector = state => {
   return state.tickets.ticketQrs
@@ -27,19 +27,16 @@ export const ticketQrSelector = createSelector(
 )
 
 export const ticketSelector = createSelector(
-  [ticketsSelector, ticketQrSelector, ticketIdSelector],
-  (tickets, ticketQr, ticketId) => {
-    if (tickets.requestStatus !== SUCCESS) return tickets
+  [ticketsRequestSelector, ticketQrSelector, ticketIdSelector],
+  (ticketsRequest, ticketQr, ticketId) => {
+    if (ticketsRequest.requestStatus !== SUCCESS) return ticketsRequest
 
-    console.log('in da selector');
-    console.log({ tickets });
-
-    if (tickets.payload[ticketId] === undefined) return undefined
+    if (ticketsRequest.payload[ticketId] === undefined) return undefined
 
     return ({
       requestStatus: SUCCESS,
       payload: {
-        ...tickets.payload[ticketId],
+        ...ticketsRequest.payload[ticketId],
         ticketQrRequest: ticketQr
       }
     })

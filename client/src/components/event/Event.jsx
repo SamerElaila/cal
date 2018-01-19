@@ -4,6 +4,7 @@ import axios from 'axios'
 import auth from '../../lib/auth'
 
 import Toolbar from '../shared/Toolbar'
+import Request from '../Request'
 import { Elements, CardElement, injectStripe } from 'react-stripe-elements';
 
 class Payment extends Component {
@@ -43,47 +44,34 @@ class Payment extends Component {
     )
   }
 }
-// import pluto from './pluto.png'
-//
-// const ImageGallery = () => {
-//   return (
-//     <div className='w-100 vh-50'>
-//       <img
-//         alt='event'
-//         className='w-100 h-100'
-//         src={pluto}
-//       />
-//     </div>
-//   )
-// }
+
 const ElementsPayments = injectStripe(Payment)
 const Event = props => {
-  if (typeof props.event === 'undefined') return '404'
+  // if (typeof props.event === 'undefined') return '404'
 
   const {
     event,
     user,
-    event: {
-      name,
-      description//,
-      // ticketPrice,
-      // ticketQuantity
-    }
+    eventRequest
   } = props
 
   return (
-    <div>
-      <Toolbar title={name} />
-      <div className='pa2 f4'> { description } </div>
-      <div style={{textAlign: 'center'}} className='w-100 mt5'>
-        <Elements>
-          <ElementsPayments event={event} user={user}/>
-        </Elements>
-        <Button raised className='dib'>
-          Buy tickets
-        </Button>
+    <Request {...eventRequest}>
+      {({ name, description }) =>
+      <div>
+        <Toolbar title={name} />
+        <div className='pa2 f4'> { description } </div>
+        <div style={{textAlign: 'center'}} className='w-100 mt5'>
+          <Elements>
+            <ElementsPayments event={event} user={user}/>
+          </Elements>
+          <Button raised className='dib'>
+            Buy tickets
+          </Button>
+        </div>
       </div>
-    </div>
+      }
+    </Request>
   )
 }
 export default Event

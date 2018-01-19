@@ -1,13 +1,15 @@
-import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { withRouter } from 'react-router-dom'
 
-import { createStateSelector } from '../utils/redux'
-import { routeEventSelector } from '../selectors/events'
+import { connect } from '../utils/redux'
+import { routeEventRequestSelector } from '../selectors/events'
 import EditEvent from '../components/edit_event/EditEvent'
 
-const mapStateToProps = createStateSelector({
-  event: routeEventSelector
-})
+const props = {
+  eventRequest: routeEventRequestSelector
+}
 
-export default compose(connect(mapStateToProps), withRouter)(EditEvent)
+export default compose(
+  connect(props),
+  withRouter
+)(EditEvent)

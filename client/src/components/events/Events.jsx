@@ -3,6 +3,7 @@ import { Fab } from 'rmwc/Fab'
 import { ToolbarIcon } from 'rmwc/Toolbar'
 import { Link } from 'react-router-dom'
 import { Menu, MenuItem } from 'rmwc/Menu'
+import Request from '../Request'
 
 import Toolbar from '../shared/Toolbar'
 import Event from './Event'
@@ -25,7 +26,7 @@ class Events extends Component {
   render() {
     const {
       toggleMenuIsOpen,
-      props: { events }
+      props: { eventsRequest }
     } = this
 
     return (
@@ -55,7 +56,8 @@ class Events extends Component {
             </Link>
           </MenuItem>
       	</Menu>
-        { events.length > 0
+        <Request {...eventsRequest}>
+        { events => events.length > 0
           ? events.map(event => <Event {...event} />)
           : (
             <span className='f4 dark-gray pa3 ma3 db tc'>
@@ -63,6 +65,7 @@ class Events extends Component {
             </span>
           )
         }
+        </Request>
         <div className='w-100 tc'>
           <Link to='/new-event' className='absolute right-2 bottom-2'>
             <Fab>add</Fab>

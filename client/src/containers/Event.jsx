@@ -3,12 +3,12 @@ import { compose } from 'redux'
 import { withRouter } from 'react-router-dom'
 
 import { createStateSelector } from '../utils/redux'
-import { routeEventSelector } from '../selectors/events'
+import { routeEventRequestSelector } from '../selectors/events'
 import { userSelector } from '../selectors/user'
 import Event from '../components/event/Event'
 
 const mapStateToProps = createStateSelector({
-  event: routeEventSelector,
+  eventRequest: routeEventRequestSelector,
   user: userSelector
 })
 

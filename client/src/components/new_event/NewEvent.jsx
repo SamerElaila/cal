@@ -26,13 +26,18 @@ class NewEvent extends Component {
   }
 
   submitEvent = () => {
-    console.log('SUBMIT EVENT CALLED');
     const {
       props: { createEvent },
       state: { images, ...eventData }
     } = this
 
-    createEvent(eventData)
+    const newEvent = {
+      ...eventData,
+      ticketQuantity: 5,
+      ticketPrice: parseInt(eventData.ticketPrice, 10)
+    }
+
+    createEvent(newEvent)
   }
 
   render() {

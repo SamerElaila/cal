@@ -16,9 +16,9 @@ export const createStateSelector = selectors => (state, props) =>
     return newState
   }, {})
 
-export const connect = (mapStateToProps, mapDispatchToProps, mergeProps) =>
+export const connect = (selectors, mapDispatchToProps, mergeProps) =>
   reduxConnect(
-    createStateSelector(mapStateToProps),
+    createStateSelector(selectors),
     mapDispatchToProps,
     mergeProps
   )
